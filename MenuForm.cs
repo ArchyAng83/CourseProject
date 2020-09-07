@@ -59,8 +59,32 @@ namespace CourseProject
                     zones[i] = inputDataForm.Zone;
                 }
             }
+
+            outputDataButton.Enabled = true;
+            buildGraphicButton.Enabled = true;
         }
 
-        
+        private void outputDataButton_Click(object sender, EventArgs e)
+        {
+            PrintData(temperatures, temperatureTextBox);
+            PrintData(zones, zoneTextBox);
+
+            outputDataButton.Enabled = false;
+        }
+
+        private void PrintData(double[] data, TextBox textBox)
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                textBox.Text += $"{i + 1}] : {data[i]}\r\n";
+
+            }
+        }
+
+        private void buildGraphicButton_Click(object sender, EventArgs e)
+        {
+            GraphicsForm graphicsForm = new GraphicsForm();
+            graphicsForm.ShowDialog();
+        }
     }
 }

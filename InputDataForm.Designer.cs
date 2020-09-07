@@ -91,6 +91,7 @@
             this.MaximumSize = new System.Drawing.Size(289, 241);
             this.MinimumSize = new System.Drawing.Size(289, 241);
             this.Name = "InputDataForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InputDataForm";
             this.ResumeLayout(false);
             this.PerformLayout();
