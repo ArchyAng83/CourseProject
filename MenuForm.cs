@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject.Caculation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,6 +69,11 @@ namespace CourseProject
         {
             PrintData(temperatures, temperatureTextBox);
             PrintData(zones, zoneTextBox);
+            var calculation = new Calculation(temperatures, zones, Count);
+            label4.Text = $"a = {calculation.GetConstA():f3}";
+            label5.Text = $"b = {calculation.GetConstB():f3}";
+            label6.Text = $"аппроксимация функцией: y = {calculation.GetConstA():f3} / x + {calculation.GetConstB():f3}";
+            label7.Text = $"средняя ошибка: {calculation.GetError():f4}%";
 
             outputDataButton.Enabled = false;
         }
