@@ -16,5 +16,12 @@ namespace CourseProject
         {
             InitializeComponent();
         }
+
+        private void enterButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MenuForm menuForm = new MenuForm();
+            menuForm.ShowDialog();         
+        }
     }
 }
