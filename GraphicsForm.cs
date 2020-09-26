@@ -12,9 +12,55 @@ namespace CourseProject
 {
     public partial class GraphicsForm : Form
     {
+        public double XFirst { get; set; }
+        public double XLast { get; set; }
+        public int Count { get; set; }
+        public double ConstA { get; set; }
+        public double ConstB { get; set; }
+
+        private int step;
+        private double[] x;
+        private double[] yExperemental;
+        private double[] yApproximal;
+
         public GraphicsForm()
         {
             InitializeComponent();
+        }
+
+        private void GraphicsForm_Load(object sender, EventArgs e)
+        {
+            step = (int)(Math.Abs(XLast - XFirst) / (Count - 1));
+            CalculateApprox();
+            CreateChart();
+            chart1.Series[0].Points.DataBindXY(x, yApproximal);
+            //chart1.Series[1].Points.DataBindXY(x, yExperemental);
+        }
+
+        private void CalculateApprox()
+        {
+            x = new double[Count];
+            yExperemental = new double[Count];
+            yApproximal = new double[Count];
+            for (int i = 0; i < Count; i++)
+            {
+                x[i] = XFirst + step * i;
+                yApproximal[i] = ConstA + ConstB / x[i];
+                
+            }
+        }
+
+       
+
+        private void CreateChart()
+        {
+
+            chart1.SetBounds(10, 10, this.Width - 20, this.Height - 20);
+            chart1.ChartAreas[0].AxisX.Minimum = XFirst;
+            chart1.ChartAreas[0].AxisX.Maximum = XLast;
+            chart1.ChartAreas[0].AxisX.MajorGrid.Interval = step;
+            chart1.Series[0].BorderWidth = 3;       
+                    
         }
     }
 }

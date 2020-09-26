@@ -17,6 +17,8 @@ namespace CourseProject
         private double[] zones;
 
         public int Count { get; set; }
+        public double ConstA { get; set; }
+        public double ConstB { get; set; }
 
 
         public MenuForm()
@@ -70,26 +72,36 @@ namespace CourseProject
             PrintData(temperatures, temperatureTextBox);
             PrintData(zones, zoneTextBox);
             var calculation = new Calculation(temperatures, zones, Count);
-            label4.Text = $"a = {calculation.GetConstA():f3}";
-            label5.Text = $"b = {calculation.GetConstB():f3}";
-            label6.Text = $"аппроксимация функцией: y = {calculation.GetConstA():f3} / x + {calculation.GetConstB():f3}";
-            label7.Text = $"средняя ошибка: {calculation.GetError():f4}%";
+            ConstA = calculation.ConstA;
+            ConstB = calculation.ConstB;
+            label4.Text = $"a = {calculation.ConstA:f3}";
+            label5.Text = $"b = {calculation.ConstB:f3}";
+            label6.Text = $"аппроксимация функцией: y = {calculation.ConstA:f3} + {calculation.ConstB:f3} / x";
+            label7.Text = $"средняя ошибка: {calculation.ErrorApprox:f4}%";
 
             outputDataButton.Enabled = false;
         }
 
-        private void PrintData(double[] data, TextBox textBox)
+        private double[] PrintData(double[] data, TextBox textBox)
         {
             for (int i = 0; i < Count; i++)
             {
-                textBox.Text += $"{i + 1}] : {data[i]}\r\n";
+                textBox.Text += $"{data[i]}\r\n";
 
             }
+            return data;
         }
 
         private void buildGraphicButton_Click(object sender, EventArgs e)
-        {
-            GraphicsForm graphicsForm = new GraphicsForm();
+        {            
+            GraphicsForm graphicsForm = new GraphicsForm
+            {
+                XFirst = temperatures[0],
+                XLast = temperatures[Count - 1],
+                Count = Count,
+                ConstA = ConstA,
+                ConstB = ConstB
+            };
             graphicsForm.ShowDialog();
         }
     }

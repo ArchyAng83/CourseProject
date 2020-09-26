@@ -68,6 +68,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "GraphicsForm";
             this.Text = "Графики функций";
+            this.Load += new System.EventHandler(this.GraphicsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 

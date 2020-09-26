@@ -20,6 +20,9 @@ namespace CourseProject.Caculation
             Temperatures = temperatures;
             Zones = zones;
             Count = count;
+            ConstA = GetConstA();
+            ConstB = GetConstB();
+            ErrorApprox = GetError();
         }
 
         /// <summary>
@@ -79,6 +82,7 @@ namespace CourseProject.Caculation
             }
             return sum;
         }
+
         /// <summary>
         /// Сумма |Y - (a + b / X)|
         /// </summary>
@@ -94,23 +98,23 @@ namespace CourseProject.Caculation
             return sum;
         }
 
-        public double GetConstA()
+        private double GetConstA()
         {
             ConstA = (Sum1(Zones) * Sum2(Temperatures) - Sum3(Temperatures) * Sum1(Temperatures, Zones))
                      / (Sum2(Temperatures) - Count * (Sum3(Temperatures) * Sum3(Temperatures)));
             return ConstA;
         }
 
-        public double GetConstB()
+        private double GetConstB()
         {
             ConstB = (Count * Sum1(Temperatures, Zones) - Sum3(Temperatures) * Sum1(Zones))
                      / (Count * Sum2(Temperatures) - (Sum3(Temperatures) * Sum3(Temperatures)));
             return ConstB;
         }
 
-        public double GetError()
+        private double GetError()
         {
-            ErrorApprox = (Sum4(Temperatures, Zones) / (Count * Sum1(Zones))) * 100;
+            ErrorApprox = Sum4(Temperatures, Zones) / (Count * Sum1(Zones)) * 100;
             return ErrorApprox;
         }
     }

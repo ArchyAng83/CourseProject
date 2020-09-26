@@ -58,11 +58,11 @@
             // 
             this.enterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.enterButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.enterButton.Location = new System.Drawing.Point(259, 246);
+            this.enterButton.Location = new System.Drawing.Point(127, 246);
             this.enterButton.Name = "enterButton";
             this.enterButton.Size = new System.Drawing.Size(75, 23);
             this.enterButton.TabIndex = 2;
-            this.enterButton.Text = "Войти";
+            this.enterButton.Text = "Начать";
             this.enterButton.UseVisualStyleBackColor = true;
             this.enterButton.Click += new System.EventHandler(this.enterButton_Click);
             // 
@@ -78,6 +78,7 @@
             this.MinimumSize = new System.Drawing.Size(362, 319);
             this.Name = "MainForm";
             this.Text = "Главная";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
