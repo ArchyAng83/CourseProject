@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,9 +63,8 @@ namespace CourseProject
                     zones[i] = inputDataForm.Zone;
                 }
             }
-
-            outputDataButton.Enabled = true;
-            buildGraphicButton.Enabled = true;
+            inputDataButton.Enabled = false;
+            outputDataButton.Enabled = true;            
         }
 
         private void outputDataButton_Click(object sender, EventArgs e)
@@ -80,6 +80,7 @@ namespace CourseProject
             label7.Text = $"средняя ошибка: {calculation.ErrorApprox:f4}%";
 
             outputDataButton.Enabled = false;
+            buildGraphicButton.Enabled = true;
         }
 
         private double[] PrintData(double[] data, TextBox textBox)
@@ -93,16 +94,62 @@ namespace CourseProject
         }
 
         private void buildGraphicButton_Click(object sender, EventArgs e)
-        {            
+        {
             GraphicsForm graphicsForm = new GraphicsForm
             {
                 XFirst = temperatures[0],
                 XLast = temperatures[Count - 1],
                 Count = Count,
                 ConstA = ConstA,
-                ConstB = ConstB
+                ConstB = ConstB,
+                Temperatures = temperatures,
+                Zones = zones
             };
             graphicsForm.ShowDialog();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false })
+            {
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamReader sr = new StreamReader(openFile.FileName))
+                    {
+
+                    }
+                }
+            }
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFile = new SaveFileDialog() { Filter = "|*.txt"})
+            {
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter sw = new StreamWriter(saveFile.FileName))
+                    {
+                        for (int i = 0; i < Count; i++)
+                        {
+                            sw.WriteLine(temperatures[i] + " " + zones[i]);
+                        }
+
+                        MessageBox.Show("Файл сохранен.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
