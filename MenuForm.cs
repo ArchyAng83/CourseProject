@@ -58,9 +58,9 @@ namespace CourseProject
                 for (i = 0; i < Count; i++)
                 {
                     InputDataForm inputDataForm = new InputDataForm();
-                    inputDataForm.ShowDialog();
-                    temperatures[i] = inputDataForm.Temperature;
-                    zones[i] = inputDataForm.Zone;
+                    inputDataForm.ShowDialog();                    
+                    temperatureTextBox.Text += inputDataForm.Temperature.ToString() + "\r\n";
+                    zoneTextBox.Text += inputDataForm.Zone.ToString() + "\r\n";
                 }
             }
             inputDataButton.Enabled = false;
@@ -69,8 +69,13 @@ namespace CourseProject
 
         private void outputDataButton_Click(object sender, EventArgs e)
         {
-            PrintData(temperatures, temperatureTextBox);
-            PrintData(zones, zoneTextBox);
+
+            double[] x = Array.ConvertAll(temperatureTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), Convert.ToDouble);
+            double[] y = Array.ConvertAll(zoneTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), Convert.ToDouble);
+            Count = x.Length;
+            temperatures = x;
+            zones = y;
+           
             var calculation = new Calculation(temperatures, zones, Count);
             ConstA = calculation.ConstA;
             ConstB = calculation.ConstB;
@@ -81,17 +86,7 @@ namespace CourseProject
 
             outputDataButton.Enabled = false;
             buildGraphicButton.Enabled = true;
-        }
-
-        private double[] PrintData(double[] data, TextBox textBox)
-        {
-            for (int i = 0; i < Count; i++)
-            {
-                textBox.Text += $"{data[i]}\r\n";
-
-            }
-            return data;
-        }
+        }        
 
         private void buildGraphicButton_Click(object sender, EventArgs e)
         {
@@ -110,23 +105,26 @@ namespace CourseProject
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
             using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false })
             {
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
-                    using (StreamReader sr = new StreamReader(openFile.FileName))
+                    using (StreamReader sr1 = new StreamReader(openFile.FileName))
                     {
-
+                        string str;
+                        while ((str = sr1.ReadLine()) != null)
+                        {
+                            string[] text = str.Split(' ');
+                            temperatureTextBox.Text += text[0] + "\r\n";
+                            zoneTextBox.Text += text[1] + "\r\n";
+                        }
                     }
                 }
             }
 
-        }
+            buildGraphicButton.Enabled = true;
+            outputDataButton.Enabled = true;
+        }        
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -149,7 +147,14 @@ namespace CourseProject
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false })
+            {
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                   
+                    File.Delete(openFile.FileName);
+                }
+            }
         }
     }
 }

@@ -84,7 +84,7 @@ namespace CourseProject.Caculation
         }
 
         /// <summary>
-        /// Сумма |Y - (a + b / X)|
+        /// Сумма |Y - (a  / X + b)|
         /// </summary>
         /// <param name="arr"></param>
         /// <returns></returns>
@@ -93,22 +93,22 @@ namespace CourseProject.Caculation
             double sum = 0;
             for (int i = 0; i < arr.Length; i++)
             {
-                sum += Math.Abs(arr2[i] - (ConstA + ConstB / arr[i]));
+                sum += Math.Abs(arr2[i] - (ConstA / arr[i] + ConstB ));
             }
             return sum;
         }
 
         private double GetConstA()
         {
-            ConstA = (Sum1(Zones) * Sum2(Temperatures) - Sum3(Temperatures) * Sum1(Temperatures, Zones))
-                     / (Sum2(Temperatures) - Count * (Sum3(Temperatures) * Sum3(Temperatures)));
+            ConstA = (Count * Sum1(Temperatures, Zones) - Sum3(Temperatures) * Sum1(Zones))
+                     / (Count * Sum2(Temperatures) - (Sum3(Temperatures) * Sum3(Temperatures)));
             return ConstA;
         }
 
         private double GetConstB()
         {
-            ConstB = (Count * Sum1(Temperatures, Zones) - Sum3(Temperatures) * Sum1(Zones))
-                     / (Count * Sum2(Temperatures) - (Sum3(Temperatures) * Sum3(Temperatures)));
+            ConstB = (Sum1(Zones) * Sum2(Temperatures) - Sum3(Temperatures) * Sum1(Temperatures, Zones))
+                     / (Sum2(Temperatures) - Count * (Sum3(Temperatures) * Sum3(Temperatures)));
             return ConstB;
         }
 
