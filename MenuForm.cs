@@ -22,11 +22,9 @@ namespace CourseProject
         public double ConstB { get; set; }
 
 
-        public MenuForm(bool admin, bool adminControl)
+        public MenuForm()
         {
             InitializeComponent();
-            deleteToolStripMenuItem.Enabled = admin;
-            usersControlToolStripMenuItem.Enabled = adminControl;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,7 +81,7 @@ namespace CourseProject
             ConstB = calculation.ConstB;
             label4.Text = $"a = {calculation.ConstA:f3}";
             label5.Text = $"b = {calculation.ConstB:f3}";
-            label6.Text = $"аппроксимация функцией: y = {calculation.ConstA:f3} / x + {calculation.ConstB:f3}";
+            label6.Text = $"аппроксимация функцией: y = {calculation.ConstA:f3} + {calculation.ConstB:f3} / x";
             label7.Text = $"средняя ошибка: {calculation.ErrorApprox:f4}%";
 
             outputDataButton.Enabled = false;
@@ -111,10 +109,10 @@ namespace CourseProject
             {
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
-                    using (StreamReader sr = new StreamReader(openFile.FileName))
+                    using (StreamReader sr1 = new StreamReader(openFile.FileName))
                     {
                         string str;
-                        while ((str = sr.ReadLine()) != null)
+                        while ((str = sr1.ReadLine()) != null)
                         {
                             string[] text = str.Split(' ');
                             temperatureTextBox.Text += text[0] + "\r\n";
@@ -153,21 +151,10 @@ namespace CourseProject
             {
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
-                    DialogResult result = MessageBox.Show("Желаете удалить ?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == DialogResult.Yes)
-                    {
-                        File.Delete(openFile.FileName);
-                        MessageBox.Show("Файл удален.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else return;
+                   
+                    File.Delete(openFile.FileName);
                 }
             }
-        }
-
-        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            var help = new HelpForm();
-            help.ShowDialog();
         }
     }
 }

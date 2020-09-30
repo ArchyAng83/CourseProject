@@ -92,7 +92,6 @@
             // 
             // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.Enabled = false;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
@@ -120,7 +119,6 @@
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.helpToolStripMenuItem1.Text = "Help";
-            this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -181,7 +179,7 @@
             this.outputDataButton.Name = "outputDataButton";
             this.outputDataButton.Size = new System.Drawing.Size(116, 23);
             this.outputDataButton.TabIndex = 5;
-            this.outputDataButton.Text = "Расчитать";
+            this.outputDataButton.Text = "Вывод данных";
             this.outputDataButton.UseVisualStyleBackColor = true;
             this.outputDataButton.Click += new System.EventHandler(this.outputDataButton_Click);
             // 
