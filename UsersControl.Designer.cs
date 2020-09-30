@@ -1,6 +1,6 @@
 ﻿namespace CourseProject
 {
-    partial class HelpForm
+    partial class UsersControl
     {
         /// <summary>
         /// Required designer variable.
@@ -28,36 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpForm));
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Help\r\n";
-            // 
-            // HelpForm
+            // UsersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 327);
-            this.Controls.Add(this.label1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "HelpForm";
-            this.Text = "HelpForm";
+            this.ClientSize = new System.Drawing.Size(476, 364);
+            this.Name = "UsersControl";
+            this.Text = "UsersControl";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
     }
 }

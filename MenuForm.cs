@@ -169,5 +169,11 @@ namespace CourseProject
             var help = new HelpForm();
             help.ShowDialog();
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var about = new AboutForm();
+            about.ShowDialog();
+        }
     }
 }

@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace CourseProject
 {
-    public partial class HelpForm : Form
+    public partial class UsersControl : Form
     {
-        public HelpForm()
+        public UsersControl()
         {
             InitializeComponent();
-            Text = "Помощь";
         }
     }
 }
