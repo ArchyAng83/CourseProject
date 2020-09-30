@@ -49,7 +49,7 @@ namespace CourseProject
             for (int i = 0; i < Count; i++)
             {
                 xApproximal[i] = XFirst + step * i;
-                yApproximal[i] = ConstA + ConstB / xApproximal[i];
+                yApproximal[i] = ConstA / xApproximal[i] + ConstB ;
                 xExperemental[i] = Temperatures[i];
                 yExperemental[i] = Zones[i];
             }
