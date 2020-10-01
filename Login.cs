@@ -76,6 +76,8 @@ namespace CourseProject
                 MessageBox.Show("Неверный логин или пароль!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            this.Close();
         }
 
         private void registrationButton_Click(object sender, EventArgs e)

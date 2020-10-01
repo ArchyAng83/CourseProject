@@ -149,8 +149,10 @@ namespace CourseProject
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false })
+            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false,  })
             {
+                openFile.InitialDirectory = "./../../SaveLoad/";
+                openFile.Title = "Удаление";
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     DialogResult result = MessageBox.Show("Желаете удалить ?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -174,6 +176,12 @@ namespace CourseProject
         {
             var about = new AboutForm();
             about.ShowDialog();
+        }
+
+        private void usersControlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var usersControl = new UsersControl();
+            usersControl.ShowDialog();
         }
     }
 }

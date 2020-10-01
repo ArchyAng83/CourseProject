@@ -97,6 +97,7 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Удалить";
+            this.deleteToolStripMenuItem.ToolTipText = "только для администрации";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
@@ -136,6 +137,8 @@
             this.usersControlToolStripMenuItem.Name = "usersControlToolStripMenuItem";
             this.usersControlToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
             this.usersControlToolStripMenuItem.Text = "Контроль пользователей";
+            this.usersControlToolStripMenuItem.ToolTipText = "только для администрации";
+            this.usersControlToolStripMenuItem.Click += new System.EventHandler(this.usersControlToolStripMenuItem_Click);
             // 
             // label1
             // 
