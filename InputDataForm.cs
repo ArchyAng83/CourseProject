@@ -20,6 +20,7 @@ namespace CourseProject
             InitializeComponent();
             inputTempretureTextBox.Text = "";
             inputZoneTextBox.Text = "";
+            Text = "Ввод экспериментальных данных";
         }
 
         private void okInputButton_Click(object sender, EventArgs e)

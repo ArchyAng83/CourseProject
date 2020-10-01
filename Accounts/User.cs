@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CourseProject.Accounts
 {
-    class User : Account
+    public class User : Account
     {
         public User(string login, string password, string fio, string group)
         {

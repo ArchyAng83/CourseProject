@@ -22,6 +22,7 @@ namespace CourseProject
         public Login()
         {
             InitializeComponent();
+            Text = "Вход";
         }
 
         private void signInButton_Click(object sender, EventArgs e)
@@ -44,7 +45,7 @@ namespace CourseProject
                 while ((str = sr.ReadLine()) != null)
                 {
 
-                    string[] text = str.Split(' ');
+                    string[] text = str.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     if (loginAccess.Equals(text[0]) && passAccess.Equals(text[1]))
                     {
                         if (text[text.Length - 1] == "admin")

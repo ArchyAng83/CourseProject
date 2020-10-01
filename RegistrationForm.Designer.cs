@@ -73,9 +73,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(16, 152);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Ф.И.О.";
+            this.label4.Text = "Имя";
             // 
             // label5
             // 
@@ -141,6 +141,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(545, 354);
+            this.MinimumSize = new System.Drawing.Size(545, 354);
             this.Name = "RegistrationForm";
             this.Text = "RegistrationForm";
             this.ResumeLayout(false);

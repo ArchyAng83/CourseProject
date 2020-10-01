@@ -28,13 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.saveButton1 = new System.Windows.Forms.Button();
+            this.deleteButton2 = new System.Windows.Forms.Button();
+            this.addButton3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(13, 13);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(426, 225);
+            this.listBox1.TabIndex = 0;
+            // 
+            // saveButton1
+            // 
+            this.saveButton1.Location = new System.Drawing.Point(13, 280);
+            this.saveButton1.Name = "saveButton1";
+            this.saveButton1.Size = new System.Drawing.Size(75, 23);
+            this.saveButton1.TabIndex = 1;
+            this.saveButton1.Text = "Сохранить";
+            this.saveButton1.UseVisualStyleBackColor = true;
+            this.saveButton1.Click += new System.EventHandler(this.saveButton1_Click);
+            // 
+            // deleteButton2
+            // 
+            this.deleteButton2.Location = new System.Drawing.Point(364, 280);
+            this.deleteButton2.Name = "deleteButton2";
+            this.deleteButton2.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton2.TabIndex = 2;
+            this.deleteButton2.Text = "Удалить";
+            this.deleteButton2.UseVisualStyleBackColor = true;
+            this.deleteButton2.Click += new System.EventHandler(this.deleteButton2_Click);
+            // 
+            // addButton3
+            // 
+            this.addButton3.Location = new System.Drawing.Point(181, 280);
+            this.addButton3.Name = "addButton3";
+            this.addButton3.Size = new System.Drawing.Size(75, 23);
+            this.addButton3.TabIndex = 3;
+            this.addButton3.Text = "Добавить";
+            this.addButton3.UseVisualStyleBackColor = true;
+            this.addButton3.Click += new System.EventHandler(this.addButton3_Click);
             // 
             // UsersControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 364);
+            this.ClientSize = new System.Drawing.Size(451, 315);
+            this.Controls.Add(this.addButton3);
+            this.Controls.Add(this.deleteButton2);
+            this.Controls.Add(this.saveButton1);
+            this.Controls.Add(this.listBox1);
             this.Name = "UsersControl";
             this.Text = "UsersControl";
             this.ResumeLayout(false);
@@ -42,5 +88,10 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button saveButton1;
+        private System.Windows.Forms.Button deleteButton2;
+        private System.Windows.Forms.Button addButton3;
     }
 }

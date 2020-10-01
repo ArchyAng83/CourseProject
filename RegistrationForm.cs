@@ -27,6 +27,7 @@ namespace CourseProject
             regPasswordTextBox.Text = "";
             regFioTextBox.Text = "";
             regGroupTextBox.Text = "";
+            Text = "Регистрация";
         }
 
         private void saveUserButton_Click(object sender, EventArgs e)
@@ -42,6 +43,20 @@ namespace CourseProject
             {
                 MessageBox.Show(ex.Message);
                 return;
+            }
+
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string str;
+                while ((str = sr.ReadLine()) != null)
+                {
+                    string[] text = str.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    if (log.Equals(text[0]))
+                    {
+                        MessageBox.Show("Такой логин уже существует.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
             }
 
             using (StreamWriter sw = new StreamWriter(path, true))

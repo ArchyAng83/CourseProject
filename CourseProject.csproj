@@ -59,6 +59,12 @@
     <Compile Include="Accounts\Account.cs" />
     <Compile Include="Accounts\Admin.cs" />
     <Compile Include="Accounts\User.cs" />
+    <Compile Include="AddUserOrAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUserOrAdminForm.Designer.cs">
+      <DependentUpon>AddUserOrAdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Caculation\Calculation.cs" />
     <Compile Include="GraphicsForm.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,9 @@
     </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddUserOrAdminForm.resx">
+      <DependentUpon>AddUserOrAdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GraphicsForm.resx">
       <DependentUpon>GraphicsForm.cs</DependentUpon>

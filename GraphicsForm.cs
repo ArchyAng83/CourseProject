@@ -29,6 +29,7 @@ namespace CourseProject
         public GraphicsForm()
         {
             InitializeComponent();
+            Text = "График";
         }
 
         private void GraphicsForm_Load(object sender, EventArgs e)

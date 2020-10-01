@@ -16,7 +16,7 @@ namespace CourseProject
         public MainForm()
         {
             InitializeComponent();
-            
+            Text = "Приложение для аппроксимации статических данных";
         }
 
         private void enterButton_Click(object sender, EventArgs e)
@@ -26,15 +26,6 @@ namespace CourseProject
             login.ShowDialog();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            //MainForm mainForm = new MainForm();
-            //mainForm.ShowDialog();
-            //Thread.Sleep(3000);
-            //Hide();
-            //Login login = new Login();
-            //login.ShowDialog();
-            
-        }
+        
     }
 }

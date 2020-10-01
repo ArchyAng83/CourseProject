@@ -80,7 +80,6 @@
             this.MinimumSize = new System.Drawing.Size(362, 319);
             this.Name = "MainForm";
             this.Text = "Главная";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
