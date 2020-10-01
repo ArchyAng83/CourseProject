@@ -51,6 +51,9 @@ namespace CourseProject
                 return;
             }
 
+            temperatureTextBox.Text = "";
+            zoneTextBox.Text = "";
+
             int i = 0;
             temperatures = new double[Count];
             zones = new double[Count];
@@ -65,7 +68,7 @@ namespace CourseProject
                     zoneTextBox.Text += inputDataForm.Zone.ToString() + "\r\n";
                 }
             }
-            inputDataButton.Enabled = false;
+
             outputDataButton.Enabled = true;            
         }
 
@@ -107,6 +110,9 @@ namespace CourseProject
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            temperatureTextBox.Text = "";
+            zoneTextBox.Text = "";
+
             using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false })
             {
                 if (openFile.ShowDialog() == DialogResult.OK)

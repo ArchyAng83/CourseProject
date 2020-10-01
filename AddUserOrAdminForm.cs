@@ -41,12 +41,12 @@ namespace CourseProject
             string[] text = addUsersTextBox1.Text.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             if (adminCheckBox1.Checked)
             {
-                Admin = new Admin(text[0], text[1], text[2], text[4]);
+                Admin = new Admin(text[0], text[1], text[2], text[3]);
                 
             }
             else
             {
-                User = new User(text[0], text[1], text[2], text[4]);
+                User = new User(text[0], text[1], text[2], text[3]);
                 
             }
 

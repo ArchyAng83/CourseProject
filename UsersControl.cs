@@ -14,7 +14,7 @@ namespace CourseProject
 {
     public partial class UsersControl : Form
     {
-        private readonly string path = "./../../login_user_data.txt";
+        private readonly string path = "./../../Users/users.txt";
 
         public UsersControl()
         {
