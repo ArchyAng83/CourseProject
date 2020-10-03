@@ -13,7 +13,6 @@ namespace CourseProject
 {
     public partial class Login : Form
     {
-        private readonly string path = "./../../Users/users.txt";
         private string loginAccess;
         private string passAccess;
         private bool flag;
@@ -38,14 +37,14 @@ namespace CourseProject
                 return;
             }
 
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(PathFiles.path))
             {
 
                 string str;
                 while ((str = sr.ReadLine()) != null)
                 {
 
-                    string[] text = str.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    string[] text = str.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     if (loginAccess.Equals(text[0]) && passAccess.Equals(text[1]))
                     {
                         if (text[text.Length - 1] == "admin")

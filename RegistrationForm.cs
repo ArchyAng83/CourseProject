@@ -13,8 +13,7 @@ using System.Windows.Forms;
 namespace CourseProject
 {
     public partial class RegistrationForm : Form
-    {
-        private readonly string path = "./../../Users/users.txt";
+    {       
         private string log;
         private string pass;
         private string fio;
@@ -45,12 +44,12 @@ namespace CourseProject
                 return;
             }
 
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(PathFiles.path))
             {
                 string str;
                 while ((str = sr.ReadLine()) != null)
                 {
-                    string[] text = str.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                    string[] text = str.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     if (log.Equals(text[0]))
                     {
                         MessageBox.Show("Такой логин уже существует.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -59,10 +58,9 @@ namespace CourseProject
                 }
             }
 
-            using (StreamWriter sw = new StreamWriter(path, true))
-            {
-                User user = new User(log, pass, fio, group);
-                sw.WriteLine(user);
+            using (StreamWriter sw = new StreamWriter(PathFiles.path, true))
+            {             
+                sw.WriteLine(new User(log, pass, fio, group));
             }
 
             this.Close();

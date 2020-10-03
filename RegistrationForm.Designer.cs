@@ -73,9 +73,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(16, 152);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Имя";
+            this.label4.Text = "Ф.И.О.";
             // 
             // label5
             // 
@@ -100,6 +100,7 @@
             // regLoginTextBox
             // 
             this.regLoginTextBox.Location = new System.Drawing.Point(103, 72);
+            this.regLoginTextBox.MaxLength = 16;
             this.regLoginTextBox.Name = "regLoginTextBox";
             this.regLoginTextBox.Size = new System.Drawing.Size(326, 22);
             this.regLoginTextBox.TabIndex = 6;
@@ -107,6 +108,7 @@
             // regPasswordTextBox
             // 
             this.regPasswordTextBox.Location = new System.Drawing.Point(103, 111);
+            this.regPasswordTextBox.MaxLength = 24;
             this.regPasswordTextBox.Name = "regPasswordTextBox";
             this.regPasswordTextBox.Size = new System.Drawing.Size(326, 22);
             this.regPasswordTextBox.TabIndex = 7;
@@ -114,6 +116,7 @@
             // regFioTextBox
             // 
             this.regFioTextBox.Location = new System.Drawing.Point(103, 149);
+            this.regFioTextBox.MaxLength = 40;
             this.regFioTextBox.Name = "regFioTextBox";
             this.regFioTextBox.Size = new System.Drawing.Size(326, 22);
             this.regFioTextBox.TabIndex = 8;
@@ -121,6 +124,7 @@
             // regGroupTextBox
             // 
             this.regGroupTextBox.Location = new System.Drawing.Point(103, 187);
+            this.regGroupTextBox.MaxLength = 16;
             this.regGroupTextBox.Name = "regGroupTextBox";
             this.regGroupTextBox.Size = new System.Drawing.Size(326, 22);
             this.regGroupTextBox.TabIndex = 9;

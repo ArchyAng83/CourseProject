@@ -13,9 +13,7 @@ using System.Windows.Forms;
 namespace CourseProject
 {
     public partial class UsersControl : Form
-    {
-        private readonly string path = "./../../Users/users.txt";
-
+    {             
         public UsersControl()
         {
             InitializeComponent();
@@ -25,7 +23,7 @@ namespace CourseProject
 
         private void LoadData()
         {
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader sr = new StreamReader(PathFiles.path))
             {
                 string str;
                 while ((str = sr.ReadLine()) != null)
@@ -42,7 +40,7 @@ namespace CourseProject
 
         private void saveButton1_Click(object sender, EventArgs e)
         {
-            using (StreamWriter sw = new StreamWriter(path))
+            using (StreamWriter sw = new StreamWriter(PathFiles.path))
             {
                 string text = "";
                 foreach (var data in listBox1.Items)
@@ -56,14 +54,15 @@ namespace CourseProject
         private void addButton3_Click(object sender, EventArgs e)
         {
             var user = new AddUserOrAdminForm();
-            user.ShowDialog();
+            user.ShowDialog();                      
+            string[] text = user.AddUser.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
             if (user.CheckedOrUncheked)
             {
-                listBox1.Items.Add(user.Admin);
+                listBox1.Items.Add(new Admin(text[0], text[1], text[2], text[3]));
             }
             else
             {
-                listBox1.Items.Add(user.User);
+                listBox1.Items.Add(new User(text[0], text[1], text[2], text[3]));
             }
         }
     }

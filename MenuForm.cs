@@ -115,6 +115,7 @@ namespace CourseProject
 
             using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false })
             {
+                openFile.InitialDirectory = PathFiles.pathToSaveLoad;
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     using (StreamReader sr = new StreamReader(openFile.FileName))
@@ -122,7 +123,7 @@ namespace CourseProject
                         string str;
                         while ((str = sr.ReadLine()) != null)
                         {
-                            string[] text = str.Split(' ');
+                            string[] text = str.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                             temperatureTextBox.Text += text[0] + "\r\n";
                             zoneTextBox.Text += text[1] + "\r\n";
                         }
@@ -138,6 +139,7 @@ namespace CourseProject
         {
             using (SaveFileDialog saveFile = new SaveFileDialog() { Filter = "|*.txt"})
             {
+                saveFile.InitialDirectory = PathFiles.pathToSaveLoad;
                 if (saveFile.ShowDialog() == DialogResult.OK)
                 {
                     using (StreamWriter sw = new StreamWriter(saveFile.FileName))
@@ -155,16 +157,16 @@ namespace CourseProject
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false,  })
+            using (OpenFileDialog deleteFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false,  })
             {
-                openFile.InitialDirectory = "./../../SaveLoad/";
-                openFile.Title = "Удаление";
-                if (openFile.ShowDialog() == DialogResult.OK)
+                deleteFile.InitialDirectory = PathFiles.pathToSaveLoad;
+                deleteFile.Title = "Удаление";
+                if (deleteFile.ShowDialog() == DialogResult.OK)
                 {
                     DialogResult result = MessageBox.Show("Желаете удалить ?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (result == DialogResult.Yes)
                     {
-                        File.Delete(openFile.FileName);
+                        File.Delete(deleteFile.FileName);
                         MessageBox.Show("Файл удален.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else return;

@@ -72,6 +72,7 @@
             // 
             this.loginTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.loginTextBox.Location = new System.Drawing.Point(163, 121);
+            this.loginTextBox.MaxLength = 16;
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(189, 25);
             this.loginTextBox.TabIndex = 3;
@@ -80,6 +81,7 @@
             // 
             this.passwordTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.passwordTextBox.Location = new System.Drawing.Point(163, 152);
+            this.passwordTextBox.MaxLength = 24;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(189, 25);
             this.passwordTextBox.TabIndex = 4;

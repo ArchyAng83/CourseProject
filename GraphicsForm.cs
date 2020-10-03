@@ -37,8 +37,8 @@ namespace CourseProject
             step = (int)(Math.Abs(XLast - XFirst) / (Count - 1));
             CalculateApprox();
             CreateChart();
-            chart1.Series[0].Points.DataBindXY(xApproximal, yApproximal);
-            chart1.Series[1].Points.DataBindXY(xExperemental, yExperemental);
+            chart1.Series[0].Points.DataBindXY(xExperemental, yExperemental);
+            chart1.Series[1].Points.DataBindXY(xApproximal, yApproximal);
         }
 
         private void CalculateApprox()
@@ -50,7 +50,7 @@ namespace CourseProject
             for (int i = 0; i < Count; i++)
             {
                 xApproximal[i] = XFirst + step * i;
-                yApproximal[i] = ConstA / xApproximal[i] + ConstB ;
+                yApproximal[i] = ConstA / xApproximal[i] + ConstB;
                 xExperemental[i] = Temperatures[i];
                 yExperemental[i] = Zones[i];
             }
