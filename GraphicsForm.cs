@@ -54,9 +54,7 @@ namespace CourseProject
                 xExperemental[i] = Temperatures[i];
                 yExperemental[i] = Zones[i];
             }
-        }
-
-       
+        }       
 
         private void CreateChart()
         {

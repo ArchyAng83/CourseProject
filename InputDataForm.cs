@@ -25,6 +25,16 @@ namespace CourseProject
 
         private void okInputButton_Click(object sender, EventArgs e)
         {
+            DataValidation();
+        }
+
+        private void inputAllDatasbutton1_Click(object sender, EventArgs e)
+        {
+            DataValidation();
+        }
+
+        private void DataValidation()
+        {
             try
             {
                 Temperature = double.Parse(inputTempretureTextBox.Text);
@@ -37,27 +47,6 @@ namespace CourseProject
             }
 
             Close();
-        }
-
-        private void inputAllDatasbutton1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Temperature = double.Parse(inputTempretureTextBox.Text);
-                Zone = double.Parse(inputZoneTextBox.Text);                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-
-            Close();
-        }
-
-        private void DataValidation()
-        {
-            
         }
 
         

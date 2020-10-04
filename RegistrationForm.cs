@@ -49,6 +49,10 @@ namespace CourseProject
                 string str;
                 while ((str = sr.ReadLine()) != null)
                 {
+                    if (str == "")
+                    {
+                        continue;
+                    }
                     string[] text = str.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     if (log.Equals(text[0]))
                     {

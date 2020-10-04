@@ -43,7 +43,10 @@ namespace CourseProject
                 string str;
                 while ((str = sr.ReadLine()) != null)
                 {
-
+                    if (str == "")
+                    {
+                        continue;
+                    }
                     string[] text = str.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
                     if (loginAccess.Equals(text[0]) && passAccess.Equals(text[1]))
                     {
@@ -83,6 +86,11 @@ namespace CourseProject
         {
             RegistrationForm registration = new RegistrationForm();
             registration.ShowDialog();
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

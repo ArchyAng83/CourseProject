@@ -248,7 +248,6 @@
             this.label6.Size = new System.Drawing.Size(125, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Полученная функция:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -295,6 +294,7 @@
             this.MinimumSize = new System.Drawing.Size(381, 507);
             this.Name = "MenuForm";
             this.Text = "Меню";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuForm_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

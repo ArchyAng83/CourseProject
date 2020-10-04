@@ -36,34 +36,38 @@ namespace CourseProject
         private void deleteButton2_Click(object sender, EventArgs e)
         {
             listBox1.Items.Remove(listBox1.SelectedItem);
+            SaveData();
+
         }
 
-        private void saveButton1_Click(object sender, EventArgs e)
+        private void SaveData()
         {
             using (StreamWriter sw = new StreamWriter(PathFiles.path))
             {
                 string text = "";
                 foreach (var data in listBox1.Items)
                 {
-                    text += data.ToString() + "\r\n";
+                    text += data.ToString() + "\n";
                 }
                 sw.WriteLine(text);
             }
-        }
+        }        
 
         private void addButton3_Click(object sender, EventArgs e)
         {
             var user = new AddUserOrAdminForm();
-            user.ShowDialog();                      
-            string[] text = user.AddUser.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            if (user.CheckedOrUncheked)
-            {
-                listBox1.Items.Add(new Admin(text[0], text[1], text[2], text[3]));
-            }
-            else
-            {
-                listBox1.Items.Add(new User(text[0], text[1], text[2], text[3]));
-            }
+            user.ShowDialog();                                
+        }
+
+        private void UsersControl_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveData();
+        }
+
+        private void updateButton1_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            LoadData();
         }
     }
 }

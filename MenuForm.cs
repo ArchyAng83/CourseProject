@@ -35,26 +35,9 @@ namespace CourseProject
         }
 
         private void inputDataButton_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    Count = int.Parse(experementCountComboBox.Text);
-            //    if (Count <= 0)
-            //    {
-            //        MessageBox.Show("Количество экспериментов должно быть положительным!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //    return;
-            //}
-
+        {          
             temperatureTextBox.Text = "";
-            zoneTextBox.Text = "";
-
-           
+            zoneTextBox.Text = "";           
             
             while (true)
             {
@@ -67,12 +50,10 @@ namespace CourseProject
                     MessageBox.Show("Данные успешно введены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                temperatureTextBox.Text += inputDataForm.Temperature.ToString() + "\r\n";
-                zoneTextBox.Text += inputDataForm.Zone.ToString() + "\r\n";
-                
-            }
 
-                       
+                temperatureTextBox.Text += inputDataForm.Temperature.ToString() + "\r\n";
+                zoneTextBox.Text += inputDataForm.Zone.ToString() + "\r\n";                
+            }                       
         }
 
         private void outputDataButton_Click(object sender, EventArgs e)
@@ -220,9 +201,9 @@ namespace CourseProject
             label7.Text = "";
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,7 @@ namespace CourseProject
 {
     public partial class AddUserOrAdminForm : Form
     {
-        public string AddUser { get; set; }
-        public bool CheckedOrUncheked { get; set; }        
+        private string addUser;        
 
         public AddUserOrAdminForm()
         {
@@ -26,15 +26,26 @@ namespace CourseProject
         {
             try
             {
-                AddUser = addUsersTextBox1.Text;
+                addUser = addUsersTextBox1.Text;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;
             }
-
-            CheckedOrUncheked = adminCheckBox1.Checked;            
+            
+            using (StreamWriter sw = new StreamWriter(PathFiles.path, true))
+            {
+                string[] text = addUser.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+                if (adminCheckBox1.Checked)
+                {
+                    sw.WriteLine(new Admin(text[0], text[1], text[2], text[3]));
+                }
+                else
+                {
+                    sw.WriteLine(new User(text[0], text[1], text[2], text[3]));
+                }
+            }
             
             this.Close();
         }

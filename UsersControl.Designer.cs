@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.saveButton1 = new System.Windows.Forms.Button();
+            this.updateButton1 = new System.Windows.Forms.Button();
             this.deleteButton2 = new System.Windows.Forms.Button();
             this.addButton3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -44,15 +44,15 @@
             this.listBox1.Size = new System.Drawing.Size(426, 214);
             this.listBox1.TabIndex = 0;
             // 
-            // saveButton1
+            // updateButton1
             // 
-            this.saveButton1.Location = new System.Drawing.Point(13, 280);
-            this.saveButton1.Name = "saveButton1";
-            this.saveButton1.Size = new System.Drawing.Size(75, 23);
-            this.saveButton1.TabIndex = 1;
-            this.saveButton1.Text = "Сохранить";
-            this.saveButton1.UseVisualStyleBackColor = true;
-            this.saveButton1.Click += new System.EventHandler(this.saveButton1_Click);
+            this.updateButton1.Location = new System.Drawing.Point(13, 280);
+            this.updateButton1.Name = "updateButton1";
+            this.updateButton1.Size = new System.Drawing.Size(75, 23);
+            this.updateButton1.TabIndex = 1;
+            this.updateButton1.Text = "Обновить";
+            this.updateButton1.UseVisualStyleBackColor = true;
+            this.updateButton1.Click += new System.EventHandler(this.updateButton1_Click);
             // 
             // deleteButton2
             // 
@@ -81,10 +81,11 @@
             this.ClientSize = new System.Drawing.Size(451, 315);
             this.Controls.Add(this.addButton3);
             this.Controls.Add(this.deleteButton2);
-            this.Controls.Add(this.saveButton1);
+            this.Controls.Add(this.updateButton1);
             this.Controls.Add(this.listBox1);
             this.Name = "UsersControl";
             this.Text = "UsersControl";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UsersControl_FormClosing);
             this.ResumeLayout(false);
 
         }
@@ -92,7 +93,7 @@
         #endregion
 
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button saveButton1;
+        private System.Windows.Forms.Button updateButton1;
         private System.Windows.Forms.Button deleteButton2;
         private System.Windows.Forms.Button addButton3;
     }
