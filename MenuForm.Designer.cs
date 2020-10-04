@@ -45,13 +45,13 @@
             this.zoneTextBox = new System.Windows.Forms.TextBox();
             this.outputDataButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.experementCountComboBox = new System.Windows.Forms.ComboBox();
             this.inputDataButton = new System.Windows.Forms.Button();
             this.buildGraphicButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,14 +80,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.openToolStripMenuItem.Text = "Открыть";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.saveToolStripMenuItem.Text = "Сохранить";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -95,7 +95,7 @@
             // 
             this.deleteToolStripMenuItem.Enabled = false;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.deleteToolStripMenuItem.Text = "Удалить";
             this.deleteToolStripMenuItem.ToolTipText = "только для администратора";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
@@ -103,7 +103,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -144,7 +144,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 121);
+            this.label1.Location = new System.Drawing.Point(3, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 1;
@@ -154,7 +154,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(227, 121);
+            this.label2.Location = new System.Drawing.Point(227, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 2;
@@ -163,7 +163,7 @@
             // temperatureTextBox
             // 
             this.temperatureTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.temperatureTextBox.Location = new System.Drawing.Point(12, 147);
+            this.temperatureTextBox.Location = new System.Drawing.Point(12, 85);
             this.temperatureTextBox.Multiline = true;
             this.temperatureTextBox.Name = "temperatureTextBox";
             this.temperatureTextBox.Size = new System.Drawing.Size(110, 136);
@@ -172,7 +172,7 @@
             // zoneTextBox
             // 
             this.zoneTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.zoneTextBox.Location = new System.Drawing.Point(237, 147);
+            this.zoneTextBox.Location = new System.Drawing.Point(237, 85);
             this.zoneTextBox.Multiline = true;
             this.zoneTextBox.Name = "zoneTextBox";
             this.zoneTextBox.Size = new System.Drawing.Size(112, 136);
@@ -193,31 +193,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 54);
+            this.label3.Location = new System.Drawing.Point(13, 324);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(157, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Количество экспериментов:";
             // 
-            // experementCountComboBox
-            // 
-            this.experementCountComboBox.FormattingEnabled = true;
-            this.experementCountComboBox.Items.AddRange(new object[] {
-            "5",
-            "10",
-            "20",
-            "30",
-            "50"});
-            this.experementCountComboBox.Location = new System.Drawing.Point(200, 51);
-            this.experementCountComboBox.Name = "experementCountComboBox";
-            this.experementCountComboBox.Size = new System.Drawing.Size(69, 21);
-            this.experementCountComboBox.TabIndex = 7;
-            // 
             // inputDataButton
             // 
-            this.inputDataButton.Location = new System.Drawing.Point(12, 86);
+            this.inputDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.inputDataButton.Location = new System.Drawing.Point(6, 434);
             this.inputDataButton.Name = "inputDataButton";
-            this.inputDataButton.Size = new System.Drawing.Size(84, 23);
+            this.inputDataButton.Size = new System.Drawing.Size(102, 23);
             this.inputDataButton.TabIndex = 8;
             this.inputDataButton.Text = "Ввод данных";
             this.inputDataButton.UseVisualStyleBackColor = true;
@@ -238,7 +225,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 290);
+            this.label4.Location = new System.Drawing.Point(12, 268);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 10;
@@ -247,7 +234,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 307);
+            this.label5.Location = new System.Drawing.Point(13, 293);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(28, 13);
             this.label5.TabIndex = 11;
@@ -256,33 +243,45 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 337);
+            this.label6.Location = new System.Drawing.Point(13, 347);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 13);
+            this.label6.Size = new System.Drawing.Size(125, 13);
             this.label6.TabIndex = 12;
-            this.label6.Text = "полученная функция";
+            this.label6.Text = "Полученная функция:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(13, 369);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 13);
+            this.label7.Size = new System.Drawing.Size(100, 13);
             this.label7.TabIndex = 13;
-            this.label7.Text = "средняя ошибка";
+            this.label7.Text = "Средняя ошибка:";
+            // 
+            // clearButton
+            // 
+            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.clearButton.Location = new System.Drawing.Point(241, 247);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(112, 23);
+            this.clearButton.TabIndex = 14;
+            this.clearButton.Text = "Очистить";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(365, 469);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buildGraphicButton);
             this.Controls.Add(this.inputDataButton);
-            this.Controls.Add(this.experementCountComboBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.outputDataButton);
             this.Controls.Add(this.zoneTextBox);
@@ -319,7 +318,6 @@
         private System.Windows.Forms.TextBox zoneTextBox;
         private System.Windows.Forms.Button outputDataButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox experementCountComboBox;
         private System.Windows.Forms.Button inputDataButton;
         private System.Windows.Forms.Button buildGraphicButton;
         private System.Windows.Forms.Label label4;
@@ -328,5 +326,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usersControlToolStripMenuItem;
+        private System.Windows.Forms.Button clearButton;
     }
 }

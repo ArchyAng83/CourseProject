@@ -36,58 +36,64 @@ namespace CourseProject
 
         private void inputDataButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Count = int.Parse(experementCountComboBox.Text);
-                if (Count <= 0)
-                {
-                    MessageBox.Show("Количество экспериментов должно быть положительным!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
+            //try
+            //{
+            //    Count = int.Parse(experementCountComboBox.Text);
+            //    if (Count <= 0)
+            //    {
+            //        MessageBox.Show("Количество экспериментов должно быть положительным!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        return;
+            //    }
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //    return;
+            //}
 
             temperatureTextBox.Text = "";
             zoneTextBox.Text = "";
 
-            int i = 0;
-            temperatures = new double[Count];
-            zones = new double[Count];
-            while (i != Count)
+           
+            
+            while (true)
             {
-                
-                for (i = 0; i < Count; i++)
+                InputDataForm inputDataForm = new InputDataForm();
+                inputDataForm.ShowDialog();
+                if (inputDataForm.DialogResult == DialogResult.OK)
                 {
-                    InputDataForm inputDataForm = new InputDataForm();
-                    inputDataForm.ShowDialog();                    
-                    temperatureTextBox.Text += inputDataForm.Temperature.ToString() + "\r\n";
-                    zoneTextBox.Text += inputDataForm.Zone.ToString() + "\r\n";
+                    outputDataButton.Enabled = true;
+                    inputDataButton.Enabled = false;
+                    MessageBox.Show("Данные успешно введены", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
+                temperatureTextBox.Text += inputDataForm.Temperature.ToString() + "\r\n";
+                zoneTextBox.Text += inputDataForm.Zone.ToString() + "\r\n";
+                
             }
 
-            outputDataButton.Enabled = true;            
+                       
         }
 
         private void outputDataButton_Click(object sender, EventArgs e)
         {
-
+            
             double[] x = Array.ConvertAll(temperatureTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), Convert.ToDouble);
             double[] y = Array.ConvertAll(zoneTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), Convert.ToDouble);
             Count = x.Length;
+            temperatures = new double[Count];
+            zones = new double[Count];
             temperatures = x;
             zones = y;
            
             var calculation = new Calculation(temperatures, zones, Count);
             ConstA = calculation.ConstA;
             ConstB = calculation.ConstB;
-            label4.Text = $"a = {calculation.ConstA:f3}";
-            label5.Text = $"b = {calculation.ConstB:f3}";
-            label6.Text = $"аппроксимация функцией: y = {calculation.ConstA:f3} / x + {calculation.ConstB:f3}";
-            label7.Text = $"средняя ошибка: {calculation.ErrorApprox:f4}%";
+            label3.Text = $"Количество экспериментов: {Count}";
+            label4.Text = $"a = {calculation.ConstA:f4}";
+            label5.Text = $"b = {calculation.ConstB:f4}";
+            label6.Text = $"Аппроксимация функцией: y = {calculation.ConstA:f4} / x + {calculation.ConstB:f4}";
+            label7.Text = $"Средняя ошибка: {calculation.ErrorApprox:f4}%";
 
             outputDataButton.Enabled = false;
             buildGraphicButton.Enabled = true;
@@ -95,6 +101,14 @@ namespace CourseProject
 
         private void buildGraphicButton_Click(object sender, EventArgs e)
         {
+            if (Count < 2)
+            {
+                MessageBox.Show("Недостаточно данных", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                buildGraphicButton.Enabled = false;
+                outputDataButton.Enabled = false;
+                inputDataButton.Enabled = true;
+                return;
+            }
             GraphicsForm graphicsForm = new GraphicsForm
             {
                 XFirst = temperatures[0],
@@ -190,6 +204,25 @@ namespace CourseProject
         {
             var usersControl = new UsersControl();
             usersControl.ShowDialog();
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            inputDataButton.Enabled = true;
+            outputDataButton.Enabled = false;
+            buildGraphicButton.Enabled = false;
+            temperatureTextBox.Text = "";
+            zoneTextBox.Text = "";
+            label3.Text = "";
+            label4.Text = "";
+            label5.Text = "";
+            label6.Text = "";
+            label7.Text = "";
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,6 +34,7 @@
             this.inputTempretureTextBox = new System.Windows.Forms.TextBox();
             this.inputZoneTextBox = new System.Windows.Forms.TextBox();
             this.okInputButton = new System.Windows.Forms.Button();
+            this.inputAllDatasbutton1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -71,19 +72,31 @@
             // okInputButton
             // 
             this.okInputButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okInputButton.Location = new System.Drawing.Point(186, 168);
+            this.okInputButton.Location = new System.Drawing.Point(153, 168);
             this.okInputButton.Name = "okInputButton";
-            this.okInputButton.Size = new System.Drawing.Size(75, 23);
+            this.okInputButton.Size = new System.Drawing.Size(108, 23);
             this.okInputButton.TabIndex = 4;
-            this.okInputButton.Text = "OK";
+            this.okInputButton.Text = "Ввод";
             this.okInputButton.UseVisualStyleBackColor = true;
             this.okInputButton.Click += new System.EventHandler(this.okInputButton_Click);
+            // 
+            // inputAllDatasbutton1
+            // 
+            this.inputAllDatasbutton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.inputAllDatasbutton1.Location = new System.Drawing.Point(13, 168);
+            this.inputAllDatasbutton1.Name = "inputAllDatasbutton1";
+            this.inputAllDatasbutton1.Size = new System.Drawing.Size(106, 23);
+            this.inputAllDatasbutton1.TabIndex = 5;
+            this.inputAllDatasbutton1.Text = "Завершить ввод";
+            this.inputAllDatasbutton1.UseVisualStyleBackColor = true;
+            this.inputAllDatasbutton1.Click += new System.EventHandler(this.inputAllDatasbutton1_Click);
             // 
             // InputDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(273, 203);
+            this.Controls.Add(this.inputAllDatasbutton1);
             this.Controls.Add(this.okInputButton);
             this.Controls.Add(this.inputZoneTextBox);
             this.Controls.Add(this.inputTempretureTextBox);
@@ -107,5 +120,6 @@
         private System.Windows.Forms.TextBox inputTempretureTextBox;
         private System.Windows.Forms.TextBox inputZoneTextBox;
         private System.Windows.Forms.Button okInputButton;
+        private System.Windows.Forms.Button inputAllDatasbutton1;
     }
 }
