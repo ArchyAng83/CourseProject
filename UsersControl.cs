@@ -18,16 +18,22 @@ namespace CourseProject
         {
             InitializeComponent();
             Text = "Контроль пользователей(только для администратора)";
+            listBox1.Items.Clear();
             LoadData();
         }
 
         private void LoadData()
         {
+            
             using (StreamReader sr = new StreamReader(PathFiles.path))
             {
                 string str;
                 while ((str = sr.ReadLine()) != null)
                 {
+                    if (str == "")
+                    {
+                        continue;
+                    }
                     listBox1.Items.Add(str);
                 }               
             }
@@ -42,12 +48,12 @@ namespace CourseProject
 
         private void SaveData()
         {
-            using (StreamWriter sw = new StreamWriter(PathFiles.path))
+            using (StreamWriter sw = new StreamWriter(PathFiles.path, true))
             {
                 string text = "";
                 foreach (var data in listBox1.Items)
                 {
-                    text += data.ToString() + "\n";
+                    text += data.ToString() + "\r\n";
                 }
                 sw.WriteLine(text);
             }

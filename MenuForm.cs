@@ -132,7 +132,12 @@ namespace CourseProject
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog saveFile = new SaveFileDialog() { Filter = "|*.txt"})
+            SaveDataFile();
+        }
+
+        private void SaveDataFile()
+        {
+            using (SaveFileDialog saveFile = new SaveFileDialog() { Filter = "|*.txt" })
             {
                 saveFile.InitialDirectory = PathFiles.pathToSaveLoad;
                 if (saveFile.ShowDialog() == DialogResult.OK)
@@ -194,16 +199,27 @@ namespace CourseProject
             buildGraphicButton.Enabled = false;
             temperatureTextBox.Text = "";
             zoneTextBox.Text = "";
-            label3.Text = "";
-            label4.Text = "";
-            label5.Text = "";
-            label6.Text = "";
-            label7.Text = "";
+            label3.Text = "Количество экспериментов:";
+            label4.Text = "a = ";
+            label5.Text = "b = ";
+            label6.Text = "Аппроксимация функцией:";
+            label7.Text = "Средняя ошибка:";
         }
 
         private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
+        {           
+            if (temperatureTextBox.Text != "" && zoneTextBox.Text != "")
+            {
+                DialogResult result = MessageBox.Show("Желаете сохранить данные?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    SaveDataFile();
+                }
+            }
+
+            this.Hide();
+            var login = new Login();
+            login.ShowDialog();            
         }
     }
 }

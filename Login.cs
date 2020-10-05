@@ -64,11 +64,13 @@ namespace CourseProject
             {
                 if (flagAdmin)
                 {
+                    this.Hide();
                     var resultAdmin = new MenuForm(true, true);
                     resultAdmin.ShowDialog();
                 }
                 else
                 {
+                    this.Hide();
                     var result = new MenuForm(false, false);
                     result.ShowDialog();
                 }
@@ -79,7 +81,7 @@ namespace CourseProject
                 return;
             }
 
-            this.Close();
+            
         }
 
         private void registrationButton_Click(object sender, EventArgs e)
@@ -90,7 +92,7 @@ namespace CourseProject
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            Application.Exit();
         }
     }
 }
