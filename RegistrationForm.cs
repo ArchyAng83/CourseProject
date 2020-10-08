@@ -1,23 +1,17 @@
 ﻿using CourseProject.Accounts;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject
 {
     public partial class RegistrationForm : Form
     {       
-        private string log;
-        private string pass;
-        private string fio;
-        private string group;
+        public string Log { get; private set; }
+        public string Pass { get; private set; }
+        public string Fio { get; private set; }
+        public string Group { get; private set; }
+        public Label Label { get; private set; }
 
         public RegistrationForm()
         {
@@ -27,18 +21,19 @@ namespace CourseProject
             regFioTextBox.Text = "";
             regGroupTextBox.Text = "";
             Text = "Регистрация";
+            Label = label1;
         }
 
         private void saveUserButton_Click(object sender, EventArgs e)
-        {           
+        {
             try
             {
-                log = regLoginTextBox.Text;
-                pass = regPasswordTextBox.Text;
-                fio = regFioTextBox.Text;
-                group = regGroupTextBox.Text;
+                Log = regLoginTextBox.Text;
+                Pass = regPasswordTextBox.Text;
+                Fio = regFioTextBox.Text;
+                Group = regGroupTextBox.Text;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;
@@ -54,7 +49,7 @@ namespace CourseProject
                         continue;
                     }
                     string[] text = str.Split("|".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                    if (log.Equals(text[0]))
+                    if (Log.Equals(text[0]))
                     {
                         MessageBox.Show("Такой логин уже существует.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
@@ -62,12 +57,17 @@ namespace CourseProject
                 }
             }
 
-            using (StreamWriter sw = new StreamWriter(PathFiles.path, true))
-            {             
-                sw.WriteLine(new User(log, pass, fio, group));
-            }
+            SaveUser();
 
             this.Close();
+        }
+
+        public virtual void SaveUser()
+        {
+            using (StreamWriter sw = new StreamWriter(PathFiles.path, true))
+            {
+                sw.WriteLine(new User(Log, Pass, Fio, Group));
+            }
         }
     }
 }

@@ -1,13 +1,6 @@
 ﻿using CourseProject.Caculation;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject
@@ -31,7 +24,7 @@ namespace CourseProject
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         private void inputDataButton_Click(object sender, EventArgs e)
