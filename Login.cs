@@ -87,5 +87,22 @@ namespace CourseProject
         {
             Application.Exit();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (passwordTextBox.UseSystemPasswordChar)
+            {
+                passwordTextBox.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                passwordTextBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {            
+            Dispose();
+        }
     }
 }

@@ -4,12 +4,12 @@ namespace CourseProject.Caculation
 {
      class Calculation
     {
-        public double[] Temperatures { get; set; }
-        public double[] Zones { get; set; }
-        public int Count { get; set; }
-        public double ConstA { get; set; }
-        public double ConstB { get; set; }
-        public double ErrorApprox { get; set; }
+        public double[] Temperatures { get; private set; }
+        public double[] Zones { get; private set; }
+        public int Count { get; private set; }
+        public double ConstA { get; private set; }
+        public double ConstB { get; private set; }
+        public double ErrorApprox { get; private set; }
 
         public Calculation(double[] temperatures, double[] zones, int count)
         {
@@ -30,10 +30,7 @@ namespace CourseProject.Caculation
         {
             double sum = 0;
             for (int i = 0; i < arr.Length; i++)
-            { if (arr[i] <= 0)
-                {
-                    arr[i] = 1;
-                }
+            { 
                 sum += arr[i];
             }
             return sum;
@@ -47,11 +44,7 @@ namespace CourseProject.Caculation
         {
             double sum = 0;
             for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] <= 0)
-                {
-                    arr[i] = 1;
-                }
+            {                
                 sum += 1 / Math.Pow(arr[i], 2);
             }
             return sum;
@@ -66,10 +59,6 @@ namespace CourseProject.Caculation
             double sum = 0;
             for (int i = 0; i < arr.Length; i++)
             {
-                if (arr[i] <= 0)
-                {
-                    arr[i] = 1;
-                }
                 sum += 1 / arr[i];
             }
             return sum;
@@ -84,11 +73,7 @@ namespace CourseProject.Caculation
         {
             double sum = 0;
             for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] <= 0)
-                {
-                    arr[i] = 1;
-                }
+            {               
                 sum += arr2[i] / arr[i] ;
             }
             return sum;
@@ -103,11 +88,7 @@ namespace CourseProject.Caculation
         {
             double sum = 0;
             for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] <= 0)
-                {
-                    arr[i] = 1;
-                }
+            {                
                 sum += Math.Abs((arr2[i] - (ConstA / arr[i] + ConstB )) / arr2[i]);
             }
             return sum;

@@ -1,4 +1,5 @@
-admin|admin|dsa|dasa|admin
-user|user|dsadas|adsd|user
-adsd|dads|dads|dadsdsds|user
+admin|admin|admin|admin|admin
+user|user|user|user|user
+Den|den1234|Денис Л|АСОИЗ-191|admin
+Apach|apa666|Иванов Иван|АСОИЗ-191|user
 

@@ -28,13 +28,13 @@ namespace CourseProject
         private void GraphicsForm_Load(object sender, EventArgs e)
         {
             step = (int)(Math.Abs(XLast - XFirst) / (Count - 1));
-            CalculateApprox();
+            CalculateFunction();
             CreateChart();
             chart1.Series[0].Points.DataBindXY(xExperemental, yExperemental);
             chart1.Series[1].Points.DataBindXY(xApproximal, yApproximal);
         }
 
-        private void CalculateApprox()
+        private void CalculateFunction()
         {
             xExperemental = new double[Count];
             xApproximal = new double[Count];
