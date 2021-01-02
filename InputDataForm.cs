@@ -7,7 +7,6 @@ namespace CourseProject
     {
         public double Temperature { get; private set; }
         public double Zone { get; private set; }
-        public bool IsButtonPush { get; private set; }
 
         public InputDataForm()
         {
@@ -24,12 +23,7 @@ namespace CourseProject
 
         private void inputAllDatasbutton1_Click(object sender, EventArgs e)
         {
-            if (inputAllDatasbutton1.DialogResult == DialogResult.OK)
-            {
-                IsButtonPush = true;                
-            }
-
-            Close();
+            DataValidation();
         }
 
         private void DataValidation()
@@ -46,6 +40,8 @@ namespace CourseProject
             }
 
             Close();
-        }       
+        }
+
+        
     }
 }

@@ -43,10 +43,10 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(105, 103);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 34);
+            this.label1.Size = new System.Drawing.Size(320, 34);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Тема: Разработка приложения для аппроксимации\r\n           экспериментальных данны" +
-    "х.           ";
+            this.label1.Text = "Тема: Создание приложения для аппроксимации\r\n           экспериментальных данных." +
+    "           ";
             // 
             // label2
             // 

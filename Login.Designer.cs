@@ -36,8 +36,6 @@
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.registrationButton = new System.Windows.Forms.Button();
             this.signInButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -87,7 +85,6 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(189, 25);
             this.passwordTextBox.TabIndex = 4;
-            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // registrationButton
             // 
@@ -113,34 +110,11 @@
             this.signInButton.UseVisualStyleBackColor = true;
             this.signInButton.Click += new System.EventHandler(this.signInButton_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(358, 153);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(26, 24);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "O";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // exitButton
-            // 
-            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitButton.Location = new System.Drawing.Point(188, 320);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(106, 23);
-            this.exitButton.TabIndex = 8;
-            this.exitButton.Text = "Выход";
-            this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(479, 355);
-            this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.signInButton);
             this.Controls.Add(this.registrationButton);
             this.Controls.Add(this.passwordTextBox);
@@ -168,7 +142,5 @@
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button registrationButton;
         private System.Windows.Forms.Button signInButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button exitButton;
     }
 }
