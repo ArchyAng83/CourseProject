@@ -9,10 +9,13 @@ namespace CourseProject
     {
         private double[] temperatures;
         private double[] zones;
+        private double[] x;
+        private double[] y;
+        private int count;
 
-        public int Count { get; set; }
-        public double ConstA { get; set; }
-        public double ConstB { get; set; }
+        public int CountForCalc { get; private set; }
+        public double ConstA { get; private set; }
+        public double ConstB { get; private set; }
 
 
         public MenuForm(bool admin, bool adminControl)
@@ -23,20 +26,19 @@ namespace CourseProject
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {            
             Application.Exit();
         }
 
         private void inputDataButton_Click(object sender, EventArgs e)
-        {          
-            temperatureTextBox.Text = "";
-            zoneTextBox.Text = "";           
-            
-            while (true)
+        {
+            ClearDataFields();
+
+            while (true) 
             {
                 InputDataForm inputDataForm = new InputDataForm();
                 inputDataForm.ShowDialog();
-                if (inputDataForm.DialogResult == DialogResult.OK)
+                if (inputDataForm.IsButtonPush)
                 {
                     outputDataButton.Enabled = true;
                     inputDataButton.Enabled = false;
@@ -45,25 +47,58 @@ namespace CourseProject
                 }
 
                 temperatureTextBox.Text += inputDataForm.Temperature.ToString() + "\r\n";
-                zoneTextBox.Text += inputDataForm.Zone.ToString() + "\r\n";                
-            }                       
+                zoneTextBox.Text += inputDataForm.Zone.ToString() + "\r\n";
+            }            
         }
 
         private void outputDataButton_Click(object sender, EventArgs e)
         {
-            
-            double[] x = Array.ConvertAll(temperatureTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), Convert.ToDouble);
-            double[] y = Array.ConvertAll(zoneTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), Convert.ToDouble);
-            Count = x.Length;
-            temperatures = new double[Count];
-            zones = new double[Count];
-            temperatures = x;
-            zones = y;
-           
-            var calculation = new Calculation(temperatures, zones, Count);
+            try
+            {
+                x = Array.ConvertAll(temperatureTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), Convert.ToDouble);
+                y = Array.ConvertAll(zoneTextBox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries), Convert.ToDouble);
+                count = x.Length;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }            
+
+            CountForCalc = 0;
+            foreach (var item in x)
+            {
+                if (item == 0)
+                {
+                    continue;
+                }
+                CountForCalc++;
+            }
+
+            if (CountForCalc < 2)
+            {
+                MessageBox.Show("Недостаточно данных", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                inputDataButton.Enabled = true;
+                return;
+            }
+
+            temperatures = new double[CountForCalc];
+            zones = new double[CountForCalc];
+            int j = 0;
+            for (int i = 0; i < count; i++)
+            {
+                if (x[i] != 0)
+                {
+                    temperatures[j] = x[i];
+                    zones[j] = y[i];
+                    j++;
+                }
+            }
+
+            var calculation = new Calculation(temperatures, zones, CountForCalc);
             ConstA = calculation.ConstA;
             ConstB = calculation.ConstB;
-            label3.Text = $"Количество экспериментов: {Count}";
+            label3.Text = $"Количество экспериментов: {count}";
             label4.Text = $"a = {calculation.ConstA:f4}";
             label5.Text = $"b = {calculation.ConstB:f4}";
             label6.Text = $"Аппроксимация функцией: y = {calculation.ConstA:f4} / x + {calculation.ConstB:f4}";
@@ -74,32 +109,26 @@ namespace CourseProject
         }        
 
         private void buildGraphicButton_Click(object sender, EventArgs e)
-        {
-            if (Count < 2)
-            {
-                MessageBox.Show("Недостаточно данных", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                buildGraphicButton.Enabled = false;
-                outputDataButton.Enabled = false;
-                inputDataButton.Enabled = true;
-                return;
-            }
+        {            
             GraphicsForm graphicsForm = new GraphicsForm
-            {
-                XFirst = temperatures[0],
-                XLast = temperatures[Count - 1],
-                Count = Count,
+            {                
+                XFirst = x[0],
+                XLast = x[x.Length - 1],
+                Count = count,
+                CountApprox = CountForCalc,
                 ConstA = ConstA,
                 ConstB = ConstB,
-                Temperatures = temperatures,
-                Zones = zones
+                Temperatures = x,
+                Zones = y,
+                TempApprox = temperatures,
+                ZoneApprox = zones
             };
             graphicsForm.ShowDialog();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            temperatureTextBox.Text = "";
-            zoneTextBox.Text = "";
+            ClearDataFields();
 
             using (OpenFileDialog openFile = new OpenFileDialog() { Filter = "|*.txt", Multiselect = false })
             {
@@ -112,14 +141,22 @@ namespace CourseProject
                         while ((str = sr.ReadLine()) != null)
                         {
                             string[] text = str.Split(" ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-                            temperatureTextBox.Text += text[0] + "\r\n";
-                            zoneTextBox.Text += text[1] + "\r\n";
+                            try
+                            {
+                                temperatureTextBox.Text += text[0] + "\r\n";
+                                zoneTextBox.Text += text[1] + "\r\n";
+                            }
+                            catch (Exception ex)
+                            {
+                                ClearDataFields();
+                                MessageBox.Show(ex.Message);
+                                return;
+                            }
                         }
                     }
                 }
             }
-
-            buildGraphicButton.Enabled = true;
+                        
             outputDataButton.Enabled = true;
         }        
 
@@ -137,7 +174,7 @@ namespace CourseProject
                 {
                     using (StreamWriter sw = new StreamWriter(saveFile.FileName))
                     {
-                        for (int i = 0; i < Count; i++)
+                        for (int i = 0; i < count; i++)
                         {
                             sw.WriteLine(temperatures[i] + " " + zones[i]);
                         }
@@ -187,6 +224,11 @@ namespace CourseProject
 
         private void clearButton_Click(object sender, EventArgs e)
         {
+            ClearDataFields();
+        }
+
+        private void ClearDataFields()
+        {
             inputDataButton.Enabled = true;
             outputDataButton.Enabled = false;
             buildGraphicButton.Enabled = false;
@@ -200,7 +242,7 @@ namespace CourseProject
         }
 
         private void MenuForm_FormClosed(object sender, FormClosedEventArgs e)
-        {           
+        {
             if (temperatureTextBox.Text != "" && zoneTextBox.Text != "")
             {
                 DialogResult result = MessageBox.Show("Желаете сохранить данные?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -212,7 +254,7 @@ namespace CourseProject
 
             this.Hide();
             var login = new Login();
-            login.ShowDialog();            
+            login.ShowDialog();
         }
     }
 }
